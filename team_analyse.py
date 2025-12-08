@@ -8,20 +8,9 @@ import streamlit as st
 from annotated_text import annotated_text
 from datetime import datetime
 import re
-import time
 
 st.set_page_config(layout="wide")
 
-# Ajouter un mécanisme d'actualisation automatique
-if 'last_refresh' not in st.session_state:
-    st.session_state['last_refresh'] = time.time()
-
-current_time = time.time()
-refresh_interval = 15 * 60  # 15 minutes en secondes
-
-if current_time - st.session_state['last_refresh'] > refresh_interval:
-    st.session_state['last_refresh'] = current_time
-    st.experimental_rerun()
 
 def get_correct_team_name(team):
     if team == "LA":
