@@ -13,6 +13,7 @@ st.set_page_config(layout="wide")
 
 
 def get_correct_team_name(team):
+    team = team.strip()
     if team == "LA":
         return "Clippers"
     elif team == "Los Angeles":
@@ -114,9 +115,11 @@ with col_stats:
         match = re.search(pattern, selected_match)
 
         if match:
+            team_1_name = get_correct_team_name(match.group(1))
+            team_2_name = get_correct_team_name(match.group(2))
+
             col1, col2 = st.columns(2)
             with col1:
-                team_1_name = get_correct_team_name(match.group(1))
                 team_1_results = teams.find_teams_by_full_name(team_1_name)
                 if not team_1_results:
                     st.error(f"Aucune équipe trouvée pour le nom : {team_1_name}")
@@ -125,7 +128,6 @@ with col_stats:
                     display_team_info(team_1)
 
             with col2:
-                team_2_name = get_correct_team_name(match.group(2))
                 team_2_results = teams.find_teams_by_full_name(team_2_name)
                 if not team_2_results:
                     st.error(f"Aucune équipe trouvée pour le nom : {team_2_name}")
