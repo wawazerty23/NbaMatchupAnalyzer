@@ -1,4 +1,4 @@
-nba_api>=1.10.2
+nba_api>=1.11.4
 requests
 numpy
 pandas
