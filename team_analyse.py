@@ -14,6 +14,7 @@ st.set_page_config(layout="wide")
 
 def get_correct_team_name(team):
     team = team.strip()
+    
     if team == "LA":
         return "Clippers"
     elif team == "Los Angeles":

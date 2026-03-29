@@ -1,15 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-# Variable pour stocker le résultat en cache
-_cached_injured_players = None
 
 def get_injured_players(url="https://www.espn.com/nba/injuries"):
-    global _cached_injured_players
-
-    # Si le résultat est déjà calculé, le retourner directement
-    if _cached_injured_players is not None:
-        return _cached_injured_players
 
     # Définir les en-têtes pour la requête
     headers = {
@@ -57,5 +50,8 @@ def get_injured_players(url="https://www.espn.com/nba/injuries"):
 
     # Stocker le résultat dans le cache
     _cached_injured_players = teams_info
-
     return teams_info
+
+if __name__ == "__main__":
+    results = get_injured_players()
+    print(results)
