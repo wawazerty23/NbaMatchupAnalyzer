@@ -6,3 +6,5 @@ streamlit
 bs4
 st-annotated-text
 selenium
+fastapi
+uvicorn

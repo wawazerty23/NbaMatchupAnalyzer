@@ -48,8 +48,6 @@ def get_injured_players(url="https://www.espn.com/nba/injuries"):
         # Ajouter la liste des joueurs blessés au dictionnaire avec le nom de l'équipe comme clé
         teams_info[team_name] = players_list
 
-    # Stocker le résultat dans le cache
-    _cached_injured_players = teams_info
     return teams_info
 
 if __name__ == "__main__":
