@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environnements temporaires
+.env
+.env.*
+
+# Systèmes
+.DS_Store
