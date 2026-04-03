@@ -123,6 +123,9 @@ def fetch_player_rankings(all_players: bool = True, url: str = "https://basketba
             continue
         
         player_data = {}
+        name = None
+        team = None
+        
         for i, cell in enumerate(cells):
             col_name = column_names[i]
             cell_text = cell.get_text(strip=True)
@@ -145,7 +148,13 @@ def fetch_player_rankings(all_players: bool = True, url: str = "https://basketba
                     # Garder comme chaîne
                     pass
             
-            player_data[col_name] = cell_text
+            # Extraire name et team pour les mettre au niveau supérieur
+            if col_name == 'name':
+                name = cell_text
+            elif col_name == 'team':
+                team = cell_text
+            else:
+                player_data[col_name] = cell_text
         
         # Extraire l'ID du joueur depuis le lien
         link = cells[3].find('a')  # La quatrième cellule contient le nom avec lien
@@ -159,7 +168,14 @@ def fetch_player_rankings(all_players: bool = True, url: str = "https://basketba
         else:
             player_data['player_id'] = None
         
-        players.append(player_data)
+        # Créer l'objet restructuré
+        player_obj = {
+            'name': name,
+            'team': team,
+            'data': player_data
+        }
+        
+        players.append(player_obj)
     
     return players
 
